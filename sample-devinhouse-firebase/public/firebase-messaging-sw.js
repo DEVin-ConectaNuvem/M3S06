@@ -1,14 +1,13 @@
-importScripts("https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js");
-importScripts(
-    "https://www.gstatic.com/firebasejs/7.16.1/firebase-messaging.js",
-);
-// For an optimal experience using Cloud Messaging, also add the Firebase SDK for Analytics.
-importScripts(
-    "https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js",
-);
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here. Other Firebase libraries
+// are not available in the service worker.
+importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js');
 
-// Initialize the Firebase app in the service worker by passing in the
-// messagingSenderId.
+
+// Initialize the Firebase app in the service worker by passing in
+// your app's Firebase config object.
+// https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
     apiKey: "AIzaSyD688MiH0zCmR8E4Eai9h9AGHR1tmFPdVI",
     authDomain: "sample-devinhouse-eb8a8.firebaseapp.com",
@@ -18,11 +17,12 @@ firebase.initializeApp({
     messagingSenderId: "801260524042",
     appId: "1:801260524042:web:e9aa66e44cb2be7a2b85f3",
     measurementId: "G-W42PEXWTCF"
-});
+  });
+  
+  // Retrieve an instance of Firebase Messaging so that it can handle background
+  // messages.
+  const messaging = firebase.messaging();
 
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
-const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function (payload) {
     console.log(
@@ -33,7 +33,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
     const notificationTitle = "Background Message Title";
     const notificationOptions = {
         body: "Background Message body.",
-        icon: "/itwonders-web-logo.png",
+        icon: "/icon.png",
     };
 
     return self.registration.showNotification(
