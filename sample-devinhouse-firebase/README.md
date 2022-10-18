@@ -4,7 +4,7 @@
 
 Repositório contendo o conteúdo das práticas elabaoradas durante a semana, para entender como o Firebase trabalha, quais os seus benefícios e como usar os seus principais recursos.
 
-### Conteúdo
+### Conteúdo Práticos 
 
 * O que é BaaS?
 * O que é o Firebase?
@@ -24,7 +24,6 @@ Repositório contendo o conteúdo das práticas elabaoradas durante a semana, pa
 * HTML
 * JavaScript
 * Firebase
-* Postman
 
 ### Setup
 
